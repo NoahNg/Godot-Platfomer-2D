@@ -1,2 +1,5 @@
 # Godot-Platfomer-2D
-Unzip file to play the game.
+This platformer is an assignment for my Game Development paper. 
+
+To play, run the .exe file.
+
