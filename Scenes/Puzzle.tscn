@@ -1,0 +1,165 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Puzzle.gd" type="Script" id=1]
+[ext_resource path="res://Photos/CheckMark.png" type="Texture" id=2]
+[ext_resource path="res://Photos/Find5.png" type="Texture" id=3]
+[ext_resource path="res://Photos/Coin01.mp3" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+
+[node name="Puzzle" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Find5" type="Sprite" parent="Control"]
+position = Vector2( 321, 177 )
+scale = Vector2( 0.197655, 0.197655 )
+texture = ExtResource( 3 )
+
+[node name="D0" type="Area2D" parent="Control"]
+position = Vector2( 274, 145 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/D0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Control/D0"]
+position = Vector2( 191, 1 )
+shape = SubResource( 1 )
+
+[node name="D1" type="Area2D" parent="Control"]
+position = Vector2( 198, 156 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/D1"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Control/D1"]
+position = Vector2( 186, 0 )
+shape = SubResource( 3 )
+
+[node name="D2" type="Area2D" parent="Control"]
+position = Vector2( 213, 186 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/D2"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Control/D2"]
+position = Vector2( 179, -3 )
+shape = SubResource( 4 )
+
+[node name="D3" type="Area2D" parent="Control"]
+position = Vector2( 270, 221 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/D3"]
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Control/D3"]
+position = Vector2( 180, -5 )
+shape = SubResource( 5 )
+
+[node name="D4" type="Area2D" parent="Control"]
+position = Vector2( 218, 281 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/D4"]
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Control/D4"]
+position = Vector2( 177, -1 )
+shape = SubResource( 6 )
+
+[node name="CheckMark" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 274, 145 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark2" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 465, 146 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark3" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 200, 157 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark4" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 385, 158 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark5" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 213, 187 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark6" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 392, 184 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark7" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 270, 222 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark8" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 449, 216 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark9" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 218, 282 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="CheckMark10" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 395, 281 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 2 )
+
+[node name="Correct" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource( 4 )
+
+[connection signal="input_event" from="Control/D0" to="." method="_on_D0_input_event"]
+[connection signal="input_event" from="Control/D1" to="." method="_on_D1_input_event"]
+[connection signal="input_event" from="Control/D2" to="." method="_on_D2_input_event"]
+[connection signal="input_event" from="Control/D3" to="." method="_on_D3_input_event"]
+[connection signal="input_event" from="Control/D4" to="." method="_on_D4_input_event"]

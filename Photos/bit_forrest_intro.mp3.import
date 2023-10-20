@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bit_forrest_intro.mp3-093bc60c682a321f7bbfffdd6e4b843d.mp3str"
+
+[deps]
+
+source_file="res://Photos/bit_forrest_intro.mp3"
+dest_files=[ "res://.import/bit_forrest_intro.mp3-093bc60c682a321f7bbfffdd6e4b843d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/explosion_dull.mp3-a3a6075eeff467d3db0abaed3674f24b.mp3str"
+
+[deps]
+
+source_file="res://Photos/explosion_dull.mp3"
+dest_files=[ "res://.import/explosion_dull.mp3-a3a6075eeff467d3db0abaed3674f24b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

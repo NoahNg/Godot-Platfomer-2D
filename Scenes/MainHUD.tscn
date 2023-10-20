@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Photos/MainHUDImage.png" type="Texture" id=1]
+[ext_resource path="res://Photos/pixel-heart-png-transparent.png" type="Texture" id=2]
+[ext_resource path="res://Photos/CompletedImage.png" type="Texture" id=3]
+[ext_resource path="res://Photos/OptionsMenu.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/MainHUD.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Heart2.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Heart3.gd" type="Script" id=7]
+[ext_resource path="res://Photos/pxlxxl.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 38, 9 )
+
+[node name="MainHUD" type="Node2D"]
+position = Vector2( 0, 8 )
+script = ExtResource( 5 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="BlankBlueButton" type="Sprite" parent="HUD"]
+position = Vector2( 168.533, 24 )
+scale = Vector2( 0.380023, 0.272727 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 335.887, 450.237, 287.898, 61.37 )
+
+[node name="BlankOrangeButton" type="Sprite" parent="HUD"]
+position = Vector2( 65.446, 24.0737 )
+scale = Vector2( 0.292105, 0.273684 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 299.099, 255.463, 229.349, 59.5424 )
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 80.0
+margin_top = 17.0
+margin_right = 144.0
+margin_bottom = 31.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heart1" type="Sprite" parent="HUD"]
+position = Vector2( 172.172, 24 )
+scale = Vector2( 0.0212766, 0.0212766 )
+texture = ExtResource( 2 )
+
+[node name="Heart2" type="Sprite" parent="HUD"]
+position = Vector2( 189.172, 24 )
+scale = Vector2( 0.0212766, 0.0212766 )
+texture = ExtResource( 2 )
+script = ExtResource( 6 )
+
+[node name="Heart3" type="Sprite" parent="HUD"]
+position = Vector2( 206.172, 24 )
+scale = Vector2( 0.0212766, 0.0212766 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="ExitButton" type="Area2D" parent="HUD"]
+position = Vector2( 601, 69 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="HUD/ExitButton"]
+position = Vector2( -32, -46 )
+scale = Vector2( 0.409091, 0.295082 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 392.351, 547.922, 187.748, 61.6981 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/ExitButton"]
+position = Vector2( -32, -46 )
+shape = SubResource( 1 )
+
+[node name="MenuButton" type="Area2D" parent="HUD"]
+position = Vector2( 510, 69 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="HUD/MenuButton"]
+position = Vector2( -32, -46 )
+scale = Vector2( 0.409091, 0.295082 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 386.054, 389.16, 183.812, 59.8737 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUD/MenuButton"]
+position = Vector2( -32, -46 )
+shape = SubResource( 1 )
+
+[connection signal="input_event" from="HUD/ExitButton" to="." method="_on_ExitButton_input_event"]
+[connection signal="input_event" from="HUD/MenuButton" to="." method="_on_MenuButton_input_event"]

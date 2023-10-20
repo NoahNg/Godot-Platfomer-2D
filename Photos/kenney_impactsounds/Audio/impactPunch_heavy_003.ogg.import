@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactPunch_heavy_003.ogg-2500a418c1e574bf7a3680f6c4229e39.oggstr"
+
+[deps]
+
+source_file="res://Photos/kenney_impactsounds/Audio/impactPunch_heavy_003.ogg"
+dest_files=[ "res://.import/impactPunch_heavy_003.ogg-2500a418c1e574bf7a3680f6c4229e39.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

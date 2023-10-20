@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FireballShoot.mp3-9df6a7ae99597eceeef5314d2bd876f5.mp3str"
+
+[deps]
+
+source_file="res://Photos/FireballShoot.mp3"
+dest_files=[ "res://.import/FireballShoot.mp3-9df6a7ae99597eceeef5314d2bd876f5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

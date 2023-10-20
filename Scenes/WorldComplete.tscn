@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/WorldComplete.gd" type="Script" id=1]
+[ext_resource path="res://Photos/Power Up.wav" type="AudioStream" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 12.5 )
+
+[node name="WorldComplete" type="Area2D"]
+position = Vector2( 622, 251 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 2.5 )
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -44.0
+margin_top = -33.0
+margin_right = 51.0
+margin_bottom = -19.0
+text = "Interact (Enter)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_WorldComplete_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_WorldComplete_body_exited"]

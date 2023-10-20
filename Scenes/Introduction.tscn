@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Photos/OptionsMenu.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Introduction.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/ExitButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 69.5, 27.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 69.5, 27.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 108, 27 )
+
+[node name="Introduction" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="OptionsMenu" type="Sprite" parent="."]
+position = Vector2( 332, 164 )
+scale = Vector2( 0.708333, 0.708333 )
+texture = ExtResource( 1 )
+
+[node name="StoryButton" type="Area2D" parent="."]
+position = Vector2( 270, 94 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryButton"]
+position = Vector2( 59.5, 17.5 )
+shape = SubResource( 1 )
+
+[node name="PlayButton" type="Area2D" parent="."]
+position = Vector2( 271, 164 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton"]
+position = Vector2( 59.5, 17.5 )
+shape = SubResource( 2 )
+
+[node name="HowToPlayButton" type="Area2D" parent="."]
+position = Vector2( 235, 232 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HowToPlayButton"]
+position = Vector2( 98, 17 )
+shape = SubResource( 3 )
+
+[node name="ExitButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 277, 299 )
+
+[connection signal="input_event" from="StoryButton" to="." method="_on_StoryButton_input_event"]
+[connection signal="input_event" from="PlayButton" to="." method="_on_PlayButton_input_event"]
+[connection signal="input_event" from="HowToPlayButton" to="." method="_on_HowToPlayButton_input_event"]

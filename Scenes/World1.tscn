@@ -1,0 +1,772 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://Final Taiga Forest/baner.png" type="Texture" id=1]
+[ext_resource path="res://stringstar fields/tileset.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Bat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ButterChicken.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SteaknCheese.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MainHUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/WorldComplete.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/MincePie.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Puzzle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/ButterChicken.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/MincePie.gd" type="Script" id=12]
+[ext_resource path="res://Photos/Cat Sprite Sheet.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/WelcomeDialog.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/BorderDialog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/World1.gd" type="Script" id=16]
+[ext_resource path="res://TileSets/TreeTiles.tres" type="TileSet" id=17]
+[ext_resource path="res://Photos/Coin01.mp3" type="AudioStream" id=18]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 76, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 341, 6 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 200, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 200, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 13 )
+region = Rect2( 64, 200, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 13 )
+region = Rect2( 96, 200, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 13 )
+region = Rect2( 64, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 13 )
+region = Rect2( 96, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 13 )
+region = Rect2( 128, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 13 )
+region = Rect2( 160, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 13 )
+region = Rect2( 192, 144, 32, 24 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 13 )
+region = Rect2( 224, 144, 32, 24 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=46]
+resource_name = "WalkOff"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 622, 164 ), Vector2( 736, 164 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 2.5 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 106, 198 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Up&Down"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 106, 198 ), Vector2( 106, 166 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Circle"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 312, 102 ), Vector2( 376, 72 ), Vector2( 440, 104 ), Vector2( 376, 136 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 312, 102 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 18.5, 3.5 )
+
+[sub_resource type="Animation" id=47]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 593, 141 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "WalkOff"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 593, 138 ), Vector2( 724, 138 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "ComeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -780, -237 ), Vector2( -764, -171 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Baner:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.32549, 0.313726, 0.313726, 1 ) ]
+}
+
+[sub_resource type="Animation" id=50]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -329, -174 ) ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_name = "ComeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -822, 187 ), Vector2( -721, 129 ) ]
+}
+
+[sub_resource type="Animation" id=52]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -325, 223 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 39, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 84.5 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Fly"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 56, 136 ), Vector2( 209, 136 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 56, 136 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Fly"
+length = 14.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6, 7.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 153, 302 ), Vector2( 252, 219 ), Vector2( 319, 280 ), Vector2( 376, 256 ), Vector2( 443, 285 ), Vector2( 505, 317 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 153, 302 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Fly"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 348, 34 ), Vector2( 348, 164 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 348, 34 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 8, 2.5 )
+
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 501, 180 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "Up"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 501, 180 ), Vector2( 501, 353 ) ]
+}
+
+[node name="World1" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Baner" type="Sprite" parent="."]
+position = Vector2( -546, -223 )
+scale = Vector2( 0.846834, 0.846834 )
+texture = ExtResource( 1 )
+offset = Vector2( 1532.77, 459.358 )
+
+[node name="Baner2" type="Sprite" parent="."]
+position = Vector2( -928, 166 )
+scale = Vector2( 0.846834, 0.846834 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 17 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327693, 5, 0, 393228, 6, 0, 458763, 2, 0, 458765, 3, 0, 458766, 4, 0, 655387, 4, 0 )
+
+[node name="Floor" type="Sprite" parent="."]
+position = Vector2( -17, 234 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+position = Vector2( 66, -6.5 )
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="Floor2" type="Sprite" parent="."]
+position = Vector2( 20, 348 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/StaticBody2D"]
+position = Vector2( 313, 4 )
+shape = SubResource( 6 )
+
+[node name="Floor3" type="Sprite" parent="."]
+position = Vector2( 519, 181 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3/StaticBody2D"]
+position = Vector2( 66, -6.5 )
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="Bebi" type="AnimatedSprite" parent="."]
+position = Vector2( 622, 164 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 22 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bebi"]
+anims/WalkOff = SubResource( 46 )
+
+[node name="Coverup4" type="Sprite" parent="."]
+position = Vector2( 294, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup5" type="Sprite" parent="."]
+position = Vector2( 408, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup6" type="Sprite" parent="."]
+position = Vector2( 522, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup7" type="Sprite" parent="."]
+position = Vector2( 613, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 112, 64, 48, 16 )
+
+[node name="Coverup8" type="Sprite" parent="."]
+position = Vector2( 579, 182 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup9" type="Sprite" parent="."]
+position = Vector2( 512, 182 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 16, 16 )
+
+[node name="Coverup10" type="Sprite" parent="."]
+position = Vector2( 693, 182 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup2" type="Sprite" parent="."]
+position = Vector2( 66, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Coverup3" type="Sprite" parent="."]
+position = Vector2( 180, 358 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="Platform1" type="KinematicBody2D" parent="."]
+position = Vector2( 106, 198 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform1"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 48, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform1"]
+autoplay = "Up&Down"
+anims/RESET = SubResource( 7 )
+anims/Up&Down = SubResource( 8 )
+
+[node name="Platform2" type="KinematicBody2D" parent="."]
+position = Vector2( 312, 102 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform2"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 48, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+autoplay = "Circle"
+anims/Circle = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="Coverup 4" type="Sprite" parent="."]
+position = Vector2( 438, 166 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Coverup 4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coverup 4/StaticBody2D"]
+position = Vector2( 12.5, -2.5 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 593, 141 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/RESET = SubResource( 47 )
+anims/WalkOff = SubResource( 48 )
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+visible = false
+margin_left = -329.0
+margin_top = -174.0
+margin_right = 2830.0
+margin_bottom = -52.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/ColorRect"]
+anims/ComeIn = SubResource( 49 )
+anims/RESET = SubResource( 50 )
+
+[node name="ColorRect2" type="ColorRect" parent="Player"]
+visible = false
+margin_left = -325.0
+margin_top = 223.0
+margin_right = 1873.0
+margin_bottom = 407.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/ColorRect2"]
+anims/ComeIn = SubResource( 51 )
+anims/RESET = SubResource( 52 )
+
+[node name="SteaknCheese" parent="." instance=ExtResource( 5 )]
+position = Vector2( 598, 310 )
+scale = Vector2( 0.101, 0.131 )
+
+[node name="MincePie" parent="." instance=ExtResource( 9 )]
+position = Vector2( 132, 140 )
+scale = Vector2( 0.181, 0.212 )
+script = ExtResource( 12 )
+
+[node name="ButterChicken" parent="." instance=ExtResource( 4 )]
+position = Vector2( 350, 94 )
+scale = Vector2( 0.181, 0.211 )
+script = ExtResource( 11 )
+
+[node name="Coverup 2" type="Sprite" parent="."]
+position = Vector2( 174, 122 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Coverup 2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coverup 2/StaticBody2D"]
+position = Vector2( 42, -6.5 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="Coverup" type="Sprite" parent="."]
+position = Vector2( 60, 236 )
+scale = Vector2( 1.42747, 1.42747 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 80, 64, 80, 16 )
+
+[node name="MainHUD" parent="." instance=ExtResource( 6 )]
+
+[node name="WorldComplete" parent="." instance=ExtResource( 8 )]
+position = Vector2( 621, 156 )
+next_world = "res://Scenes/World2.tscn"
+
+[node name="WelcomeDialog" parent="." instance=ExtResource( 14 )]
+position = Vector2( 26, 218 )
+
+[node name="BorderDialog" parent="." instance=ExtResource( 15 )]
+position = Vector2( 0, 284 )
+
+[node name="BorderDialog2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 648, 287 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 553, 317 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -53.5 )
+shape = SubResource( 11 )
+
+[node name="Puzzle" parent="." instance=ExtResource( 10 )]
+
+[node name="Bat" parent="." instance=ExtResource( 3 )]
+position = Vector2( 56, 136 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bat"]
+autoplay = "Fly"
+anims/Fly = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="Bat2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 153, 302 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bat2"]
+autoplay = "Fly"
+anims/Fly = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+
+[node name="Bat3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 348, 34 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bat3"]
+autoplay = "Fly"
+anims/Fly = SubResource( 16 )
+anims/RESET = SubResource( 17 )
+
+[node name="Platform3" type="KinematicBody2D" parent="."]
+position = Vector2( 501, 180 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform3"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 112, 64, 16, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2( 0, -6.5 )
+shape = SubResource( 23 )
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform3"]
+autoplay = "Up"
+anims/RESET = SubResource( 24 )
+anims/Up = SubResource( 25 )
+
+[node name="PickedUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
+volume_db = 10.487
+
+[connection signal="body_entered" from="SteaknCheese" to="SteaknCheese" method="_on_SteaknCheese_body_entered"]
+[connection signal="body_entered" from="ButterChicken" to="ButterChicken" method="_on_ButterChicken_body_entered"]
+[connection signal="body_entered" from="BorderDialog" to="Player" method="_on_BorderDialog_body_entered"]
+[connection signal="body_entered" from="BorderDialog2" to="Player" method="_on_BorderDialog_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

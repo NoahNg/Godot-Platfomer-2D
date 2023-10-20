@@ -1,0 +1,185 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Idle0.png" type="Texture" id=1]
+[ext_resource path="res://Photos/Text_placeholder.png" type="Texture" id=2]
+[ext_resource path="res://Photos/pngegg.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Dialog.gd" type="Script" id=4]
+[ext_resource path="res://Photos/MainHUDImage.png" type="Texture" id=5]
+[ext_resource path="res://Photos/pxlxxl.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Photos/Free_Cat_SFX_Meow4.wav" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 23
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 23
+outline_size = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Load"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 108, 102 ), Vector2( 108, 105 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 108, 102 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 66, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 48.5, 10 )
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="DialogBox" type="Control" parent="."]
+visible = false
+anchor_left = 0.576
+anchor_top = 1.0
+anchor_right = 0.576
+anchor_bottom = 1.0
+margin_left = -205.64
+margin_top = -106.0
+margin_right = 110.36
+margin_bottom = -33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Script" type="RichTextLabel" parent="DialogBox"]
+margin_left = 52.0
+margin_top = 16.0
+margin_right = 275.0
+margin_bottom = 65.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "Placeholder long text"
+text = "Placeholder long text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+playback_speed = 2.5
+playback/speed = 2.5
+
+[node name="CharName" type="RichTextLabel" parent="DialogBox"]
+margin_left = 136.0
+margin_top = 1.0
+margin_right = 205.0
+margin_bottom = 19.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "Placeholder"
+text = "Placeholder"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="DialogBox"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 108, 102 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 46, -41, 54, -41, 50, -34 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Polygon2D"]
+autoplay = "Load"
+anims/Load = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="DagAva" type="Sprite" parent="DialogBox"]
+visible = false
+position = Vector2( 294, 11 )
+scale = Vector2( 1.47561, 1.47561 )
+texture = ExtResource( 1 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 12.9368, 4.31811, 42.6439, 41.8959 )
+
+[node name="CatAva" type="Sprite" parent="DialogBox"]
+visible = false
+position = Vector2( 16, 11 )
+scale = Vector2( 0.27125, 0.27125 )
+texture = ExtResource( 3 )
+
+[node name="CatSFX" type="AudioStreamPlayer2D" parent="DialogBox"]
+stream = ExtResource( 7 )
+
+[node name="ReadyButton" type="Area2D" parent="."]
+visible = false
+position = Vector2( 317, 139 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ReadyButton"]
+position = Vector2( 0.999992, 9.53674e-07 )
+scale = Vector2( 0.347458, 0.347458 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 324, 157, 379, 59 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReadyButton"]
+position = Vector2( 1, 0 )
+shape = SubResource( 6 )
+
+[node name="NotReadyButton" type="Area2D" parent="."]
+visible = false
+position = Vector2( 322, 171 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="NotReadyButton"]
+position = Vector2( -3.30645, 0.499999 )
+scale = Vector2( 0.33871, 0.33871 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 314.72, 351.392, 286.093, 62.2725 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotReadyButton"]
+position = Vector2( -3.5, 0 )
+shape = SubResource( 7 )
+
+[connection signal="tween_completed" from="DialogBox/Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="input_event" from="ReadyButton" to="." method="_on_ReadyButton_input_event"]
+[connection signal="input_event" from="NotReadyButton" to="." method="_on_NotReadyButton_input_event"]

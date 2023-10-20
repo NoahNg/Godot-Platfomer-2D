@@ -1,0 +1,185 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Fall0.png" type="Texture" id=1]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Jump0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Idle0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run1.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=5]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run0.png" type="Texture" id=6]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run4.png" type="Texture" id=8]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Run3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Fire0.png" type="Texture" id=11]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Fire2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites (1)/Sprites/Dag/Fire1.png" type="Texture" id=13]
+[ext_resource path="res://Photos/FireballShoot.mp3" type="AudioStream" id=14]
+[ext_resource path="res://Photos/hit1.mp3" type="AudioStream" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Fire",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30.2491, 52.5292 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Inv"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Rest"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.541176, 0.14902, 0.14902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.541176, 0.14902, 0.14902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 321, 14 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5.68434e-14, 2 )
+scale = Vector2( 0.53125, 0.46875 )
+frames = SubResource( 1 )
+animation = "Idle"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16.5, 18.5 )
+scale = Vector2( 0.281, 0.257 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_top = -1
+limit_bottom = 1
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 36, 16 )
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InvulnerabilityAnimation" type="AnimationPlayer" parent="."]
+anims/Inv = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/Rest = SubResource( 5 )
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="FireballTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="ShootFireball" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = -5.244
+
+[node name="GotHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+volume_db = -5.244
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
+[connection signal="timeout" from="FireballTimer" to="." method="_on_FireballTimer_timeout"]
